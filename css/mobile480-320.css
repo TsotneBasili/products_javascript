@@ -55,6 +55,7 @@
         display: none;
     }
     .catalog_sec_button2{
+        justify-content: center;
         width: 36px;
         height: 32px;
     }
