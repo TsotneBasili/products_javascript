@@ -175,6 +175,7 @@
 /* home_section2 */
 .home_section2 {
     position: relative;
+    top: 100px;
 
     display: flex;
     flex-direction: column;
