@@ -34,7 +34,11 @@ let users = [
 
 
 function errorMassage(element, massage) {
-    form.style.backgroundColor = '#2C4246CC'
+    form.classList.remove('was-validated')
+
+    form.classList.add('not-validated')
+
+
     // Remove any existing error messages
     const existingError = element.parentElement.querySelector('.invalid-feedback');
     if (existingError) {
@@ -60,17 +64,16 @@ form.addEventListener('submit', (event) => {
     //server imitation
     const user = users.find(user => user.email === email)
     if (!user) {
-        // const div = document.createElement('div');
-        // div.classList.add('invalid-feedback')
-        // div.innerText = "please check credentials";
-        // form.email.classList.add('is-invalid')
-        // form.password.parentElement.appendChild(div);
         errorMassage(form.email, "please check credentials")
         errorMassage(form.password, "please check credentials")
         return;
     } 
     
     if (user.password === password){
+        form.classList.remove('not-validated')
+
+        form.classList.add('was-validated')
+
         const existingError = form.email.parentElement.querySelector('.invalid-feedback');
         if (existingError) {
             form.email.parentElement.removeChild(existingError);
@@ -79,8 +82,7 @@ form.addEventListener('submit', (event) => {
         if (existingError1) {
             form.password.parentElement.removeChild(existingError1);
         }
-        form.classList.add('was-validated')
-        return;
+        return
     }
     
     errorMassage(form.email, "please check credentials")
