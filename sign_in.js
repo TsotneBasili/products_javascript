@@ -34,6 +34,7 @@ let users = [
 
 
 function errorMassage(element, massage) {
+    form.style.backgroundColor = '#2C4246CC'
     // Remove any existing error messages
     const existingError = element.parentElement.querySelector('.invalid-feedback');
     if (existingError) {
@@ -70,6 +71,14 @@ form.addEventListener('submit', (event) => {
     } 
     
     if (user.password === password){
+        const existingError = form.email.parentElement.querySelector('.invalid-feedback');
+        if (existingError) {
+            form.email.parentElement.removeChild(existingError);
+        }
+        const existingError1 = form.password.parentElement.querySelector('.invalid-feedback');
+        if (existingError1) {
+            form.password.parentElement.removeChild(existingError1);
+        }
         form.classList.add('was-validated')
         return;
     }

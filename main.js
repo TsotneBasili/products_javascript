@@ -134,22 +134,29 @@ function fetchFunction(page, productPerPage, div, api='default') {
                     
                     //sorting
                     //popular
-                    sortByPopular.addEventListener('click', () =>{
-
-                        // page = 0
+                    let sortEventCount = 0
+                    function sortByPopularEventListener() {
+                        sortEventCount += 1
+                        if (sortEventCount > 1) {
+                            sortOptionAsc.removeEventListener('click', sortOptionAscEventListener);
+                            sortOptionAsc.addEventListener('click', sortOptionAscEventListener);
+                         }
+ 
                         window.location.href = './catalog.html'
-                        // arrowDown.style.transform = 'rotate(0deg)';   
-                        // catalogSecButton2.removeChild(sortOptionDesc);
-                        // catalogSecButton2.removeChild(sortOptionAsc);  
-                        // div.innerHTML = (`
-                        //     `);
-                        // fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog)
-                    })
+        
+                    };
+                    sortByPopular.addEventListener('click', sortByPopularEventListener)
 
                     //asc
-                    sortOptionAsc.addEventListener('click', () => {
-                        
-                        // window.location.href = './catalog.html'
+                    let ascCOunt = 0
+                    function sortOptionAscEventListener() {
+                        sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
+
+                        ascCOunt +=1
+                        // if (ascCOunt > 1){
+                        //    sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
+                        //    sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
+                        // }
 
                         arrowDown.style.transform = 'rotate(0deg)';     
                         
@@ -186,12 +193,23 @@ function fetchFunction(page, productPerPage, div, api='default') {
     
                         })
                         
+                        sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
 
-
-                    })
+                    }
+                    sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
 
                     //desk
-                    sortOptionDesc.addEventListener('click', () => {
+                    let descCOunt = 0;
+                    function sortOptionDescEventListener() {
+                        descCOunt += 1
+                        sortOptionDesc.removeEventListener('click', sortOptionDescEventListener)
+
+                        // if (ascCOunt > 1){
+                        //     sortOptionDesc.removeEventListener('click', sortOptionDescEventListener)
+                        //     sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
+                        //  }
+
+
                         arrowDown.style.transform = 'rotate(0deg)';     
 
                         catalogSecButton2.removeChild(sortOptionAsc);
@@ -227,10 +245,12 @@ function fetchFunction(page, productPerPage, div, api='default') {
                             fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
     
                         })
-                        
+                        sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
 
 
-                    })
+                    }
+                    sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
+                    
 
                 }
 
@@ -380,7 +400,10 @@ const productPerPageCatalogAsc = 3;
 
 
 //catalog desc
+let currentPageDesc = 0;
+
 const productPerPageCatalogDesc = 5
+
 
 ///sorting
 const catalogSecButton2 = document.querySelector('.catalog_sec_button2');
@@ -410,6 +433,11 @@ let clickCount = 0;
 function handleCatalogClick() {
     page = 0
     clickCount += 1
+    if (clickCount > 1){
+        catalogSecButton2.removeEventListener('click', handleCatalogClick)
+        catalogSecButton2.addEventListener('click', handleCatalogClick)
+     }
+
 
     if (clickCount % 2 === 1){
         catalogSecButton2.appendChild(sortByPopular);
