@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <script src="https://kit.fontawesome.com/4246e4d6fd.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/laptop1439-769.css">
     <link rel="stylesheet" href="css/tablet768-481.css">
@@ -45,7 +46,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
-                <button class="header_button2">
+                <button id="user_button" class="header_button2">
                     <i class="fa-solid fa-user"></i>
                 </button>
 
@@ -56,6 +57,8 @@
 
         </header>
 
+
+        
         <!-- catalog_section  -->
         <section class="catalog_section">
             <section class="catalog_sec_sec1">
@@ -67,105 +70,26 @@
                 </section>
                 <section class="catalog_sec_sec1_sec2">
                     <h2 class="catalog_sec_h2">Sort by:</h2>
-                    <button type="menu" class="catalog_sec_button2">
-                        <span class="catalog_span">Best selling</span>
-                        <img src="images/catalog_images/solar_alt-arrow-down-outline.svg" alt="">
+                    <button  type="menu" class="catalog_sec_button2">
+                        <span id="sortByPopular" class="catalog_span">Best selling</span>
+                        <img id="arrowDown" src="images/catalog_images/solar_alt-arrow-down-outline.svg" alt="">
                     </button>
                 </section>
             </section>
                 
             <section class="catalog_sec_sec2">
-                <article class="catalog_sec_sec2_article">
-                    <img src="images/catalog_images/Rectangle1.png" alt=""class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p> 
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p">$950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-                        
-
-                    </span> 
-                </article>
-                <article class="catalog_sec_sec2_article">
-                    <img src="images/catalog_images/Rectangle2.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p">$950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article">
-                    <img src="images/catalog_images/Rectangle3.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article">
-                    <img src="images/catalog_images/Rectangle4.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article section3_article56_none catalog_disapear_5_6">
-                    <img src="images/catalog_images/Rectangle5.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article section3_article56_none catalog_disapear_5_6">
-                    <img src="images/catalog_images/Rectangle6.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article section3_article789_none catalog_disapear_7_8_9">
-                    <img src="images/catalog_images/Rectangle7.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article section3_article789_none catalog_disapear_7_8_9">
-                    <img src="images/catalog_images/Rectangle8.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950</p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
-                <article class="catalog_sec_sec2_article section3_article789_none catalog_disapear_7_8_9">
-                    <img src="images/catalog_images/Rectangle9.png" alt="" class="catalog_sec_sec2_article_image">
-                    <p class="catalog_sec_sec2_article_p">lorem ipsum</p>
-                    <span class="catalog_sec_sec2_article_span">
-                        <p class="catalog_sec_sec2_article_span_p"> $950 </p>
-                        <i class="fa-sharp fa-solid fa-cart-plus section3_cart"></i>
-
-                    </span>
-                </article>
+                
             </section>
 
-            <section class="catalog_sec_sec3">
-                <button class="catalog_sec_sec3_button1">
-                    <img src="images/catalog_images/iconamoon_arrow-left-2-duotone.svg" alt="">
-                    <span class = "catalog_next_prev_none">Previous</span>
-                </button>
-                <h3 class="catalog_sec_sec3_h3">Page 1 of 5</h3>
-                <button class="catalog_sec_sec3_button2">
+            <section id="buttonSection" class="catalog_sec_sec3">
+                <div id="prevButtonSection">
+                    <button id="previousButton" class="catalog_sec_sec3_button1">
+                        <img src="images/catalog_images/iconamoon_arrow-left-2-duotone.svg" alt="">
+                        <span class = "catalog_next_prev_none">Previous</span>
+                    </button>
+                </div>
+                <h3 id="pageCount" class="catalog_sec_sec3_h3"></h3>
+                <button id="nextButton" class="catalog_sec_sec3_button2">
                     <span class = "catalog_next_prev_none">Next</span>
                     <img src="images/catalog_images/iconamoon_arrow-right-2-duotone.svg" alt="">
                 </button>
@@ -239,7 +163,10 @@
             </section>
         </footer>
     </div>
-    <script src="script.js"></script>
+    
+    <script src="main.js"></script>
+    <script src="sign_in.js"></script>
+    <script src="burger.js"></script>
 
 </body>
 </html>
