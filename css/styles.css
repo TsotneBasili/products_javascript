@@ -2,7 +2,7 @@
 
 /* container  */
 .container {
-    width: min(100%, 3440px);
+    width: min(100%, 1440px);
     /* min-width: 100%; */
     margin: auto;
 }
@@ -538,6 +538,7 @@
 .catalog_sec_sec2 {
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-evenly;
     gap: 40px 20px;
 }
 
