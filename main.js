@@ -3,11 +3,50 @@
 //fetch function
 const starSOlid = `<i class="fa-solid fa-star"></i>`;
 const starNormal = `<i class="fa-regular fa-star"></i>`;
-const next = document.querySelector('#nextButton')
-const previous = document.querySelector('#previousButton')
+
+const pageCount = document.querySelector('#pageCount')
+
+
 const buttonSection = document.querySelector('#buttonSection')
 const prevButtonSection = document.querySelector('#prevButtonSection')
-const pageCount = document.querySelector('#pageCount')
+//popular
+const next = document.querySelector('#nextButton')
+const previous = document.querySelector('#previousButton')
+
+// asc button
+const nextAsc = document.createElement('button')
+nextAsc.id ='nextAsc'
+nextAsc.classList.add('catalog_sec_sec3_button2')
+nextAsc.innerHTML = `
+    <span class = "catalog_next_prev_none">Next</span>
+    <img src="images/catalog_images/iconamoon_arrow-right-2-duotone.svg" alt="">
+`;
+
+const prevAsc = document.createElement('button')
+prevAsc.id ='prevAsc'
+prevAsc.classList.add('catalog_sec_sec3_button1')
+prevAsc.innerHTML = `
+    <img src="images/catalog_images/iconamoon_arrow-left-2-duotone.svg" alt="">
+    <span class = "catalog_next_prev_none">Previous</span>
+`;
+
+
+//desc
+const nextDesc = document.createElement('button')
+nextDesc.id ='nextDesc'
+nextDesc.classList.add('catalog_sec_sec3_button2')
+nextDesc.innerHTML = `
+    <span class = "catalog_next_prev_none">Next</span>
+    <img src="images/catalog_images/iconamoon_arrow-right-2-duotone.svg" alt="">
+`;
+
+const prevDesc = document.createElement('button')
+prevDesc.id ='prevDesc'
+prevDesc.classList.add('catalog_sec_sec3_button1')
+prevDesc.innerHTML = `
+    <img src="images/catalog_images/iconamoon_arrow-left-2-duotone.svg" alt="">
+    <span class = "catalog_next_prev_none">Previous</span>
+`;
 
 
 function createProduct(dataPassed, page, productPerPage, div, api='default') {
@@ -147,68 +186,73 @@ function fetchFunction(page, productPerPage, div, api='default') {
                     };
                     sortByPopular.addEventListener('click', sortByPopularEventListener)
 
+                    let ascSortEventCount = 0
                     //asc
-                    let ascCOunt = 0
                     function sortOptionAscEventListener() {
-                        sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
-
-                        ascCOunt +=1
-                        // if (ascCOunt > 1){
-                        //    sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
-                        //    sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
+                        // if (ascSortEventCount === 2){
+                        // catalogSecButton2.removeChild(sortOptionAsc);
                         // }
+                        // ascSortEventCount += 1
+                        sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
 
                         arrowDown.style.transform = 'rotate(0deg)';     
                         
                         catalogSecButton2.removeChild(sortOptionDesc);
                         catalogSecButton2.removeChild(sortByPopular);
+
                         page = 0
-                        // buttonSection.removeChild(next);
-                        next.removeEventListener('click', handleNextClick);
 
-                        // prevButtonSection.removeChild(previous);
-                        previous.removeEventListener('click', handlePreviousClick);
-                        
-                        fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
-
-                        
-                        next.addEventListener('click', () => {
-                            page += 1
-                            buttonSection.removeChild(next)
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
-                            div.innerHTML = (`
-                            `);
-    
-                            fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
-                        })
-
-                    
-                        previous.addEventListener('click', () => {
+                        //prev_next asc buttons
+                        //prev
+                        if (prevButtonSection.contains(previous)) {
+                            prevButtonSection.removeChild(previous);
+                        }
+                        if (prevButtonSection.contains(prevDesc)) {
+                            prevButtonSection.removeChild(prevDesc);
+                        }
+                       //prevAsc                   
+                        function prevAscEventListener() {
                             page -= 1
-                            prevButtonSection.removeChild(previous)
+                            prevButtonSection.removeChild(prevAsc)
                             pageCount.textContent = `Page ${page} of ${totalPages}`;
                             div.innerHTML = (`
                                 `);
+
                             fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
     
-                        })
-                        
+                        }
+    
+                        prevAsc.addEventListener('click', prevAscEventListener)
+
+                        //next
+                        if (buttonSection.contains(next)) {
+                            buttonSection.removeChild(next);
+                        }
+                        if (buttonSection.contains(nextDesc)) {
+                            buttonSection.removeChild(nextDesc);
+                        }
+
+
+                        function nextAscEventListener()  {    
+                            page += 1
+                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                            div.innerHTML = (`
+                            `);
+
+                            fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
+                        }
+                        nextAsc.addEventListener('click', nextAscEventListener)
+
                         sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
+
+                        fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')     
 
                     }
                     sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
 
                     //desk
-                    let descCOunt = 0;
                     function sortOptionDescEventListener() {
-                        descCOunt += 1
                         sortOptionDesc.removeEventListener('click', sortOptionDescEventListener)
-
-                        // if (ascCOunt > 1){
-                        //     sortOptionDesc.removeEventListener('click', sortOptionDescEventListener)
-                        //     sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
-                        //  }
-
 
                         arrowDown.style.transform = 'rotate(0deg)';     
 
@@ -216,37 +260,50 @@ function fetchFunction(page, productPerPage, div, api='default') {
                         catalogSecButton2.removeChild(sortByPopular);
 
                         page = 0
-                        // buttonSection.removeChild(next);
-                        next.removeEventListener('click', handleNextClick);
+                        //prev_next asc buttons
+                        if (prevButtonSection.contains(previous)) {
+                            prevButtonSection.removeChild(previous);
+                        }
 
-                        // prevButtonSection.removeChild(previous);
-                        previous.removeEventListener('click', handlePreviousClick);
-                        
-                        fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
+                        if (prevButtonSection.contains(prevAsc)) {
+                            prevButtonSection.removeChild(prevAsc);
+                        }
 
-                        
-                        next.addEventListener('click', () => {
-                            page += 1
-                            buttonSection.removeChild(next)
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
-                            div.innerHTML = (`
-                            `);
-    
-                            fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
-                        })
-
-                    
-                        previous.addEventListener('click', () => {
+                       //prevDesc                   
+                        function prevDescEventListener() {
                             page -= 1
-                            prevButtonSection.removeChild(previous)
+                            prevButtonSection.removeChild(prevDesc)
                             pageCount.textContent = `Page ${page} of ${totalPages}`;
                             div.innerHTML = (`
                                 `);
+
                             fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
     
-                        })
+                        }
+    
+                        prevDesc.addEventListener('click', prevDescEventListener)
+
+                        //next
+                        if (buttonSection.contains(next)) {
+                            buttonSection.removeChild(next);
+                        }
+                        if (buttonSection.contains(nextAsc)) {
+                            buttonSection.removeChild(nextAsc);
+                        }
+
+                        function nextDescEventListener()  {    
+                            page += 1
+                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                            div.innerHTML = (`
+                            `);
+
+                            fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
+                        }
+                        nextDesc.addEventListener('click', nextDescEventListener)
+
                         sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
 
+                        fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc') 
 
                     }
                     sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
@@ -265,7 +322,6 @@ function fetchFunction(page, productPerPage, div, api='default') {
 
 
     function fetchFunctionasc(){
-        
         div.innerHTML = ''
 
         fetch(`https://dummyjson.com/products?sortBy=title&order=asc&limit=${productPerPage}&skip=${page * productPerPage}`)
@@ -279,39 +335,18 @@ function fetchFunction(page, productPerPage, div, api='default') {
                     createProduct(data, page, productPerPage, div, api)
 
                     if (page != 0) {
-                        prevButtonSection.appendChild(previous)
-
+                        prevButtonSection.appendChild(prevAsc)
                     } else if (page === 0 ) {
-                        prevButtonSection.removeChild(previous)
-
+                        if (prevButtonSection.contains(prevAsc)) {
+                            prevButtonSection.removeChild(prevAsc);
+                        }
                     }
-
-                    previous.addEventListener('click', () => {
-                        page -= 1
-                        prevButtonSection.removeChild(previous)
-                        pageCount.textContent = `Page ${page} of ${totalPages}`;
-                        div.innerHTML = (`
-                            `);
-                        fetchFunction(page, productPerPage, div, 'asc')
-
-                    })
 
                     if (page === Math.ceil(data.total / productPerPage)) {
-                        buttonSection.removeChild(next)
+                        buttonSection.removeChild(nextAsc)
                     } else if (page < Math.ceil(data.total / productPerPage) - 1) {
-                        buttonSection.appendChild(next)
-                    }
-                    next.addEventListener('click', () => {
-                        page += 1
-                        buttonSection.removeChild(next)
-                        pageCount.textContent = `Page ${page} of ${totalPages}`;
-                        div.innerHTML = (`
-                        `);
-
-                        fetchFunction(page, productPerPage, div, 'asc')
-                    })
-                    
-                
+                        buttonSection.appendChild(nextAsc)
+                    } 
 
             })
     } 
@@ -329,40 +364,24 @@ function fetchFunction(page, productPerPage, div, api='default') {
 
                     createProduct(data, page, productPerPage, div, api)
 
-                    if (page != 0) {
-                        prevButtonSection.appendChild(previous)
-
-                    } else if (page === 0 ) {
-                        prevButtonSection.removeChild(previous)
-
+                    
+                    //desc
+                    if (page != 0 ) {
+                        prevButtonSection.appendChild(prevDesc)
+                    } else if (page === 0) {
+                        if (prevButtonSection.contains(prevDesc)) {
+                            prevButtonSection.removeChild(prevDesc);
+                        }
                     }
 
-                    previous.addEventListener('click', () => {
-                        page -= 1
-                        prevButtonSection.removeChild(previous)
-                        pageCount.textContent = `Page ${page} of ${totalPages}`;
-                        div.innerHTML = (`
-                            `);
-                        fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'desc')
-
-                    })
 
                     if (page === Math.ceil(data.total / productPerPage)) {
-                        buttonSection.removeChild(next)
-                    } else if (page < Math.ceil(data.total / productPerPage) - 1) {
-                        buttonSection.appendChild(next)
+                        buttonSection.removeChild(nextDesc)
+                    } else if (page < Math.ceil(data.total / productPerPage) - 1 ) {
+                        buttonSection.appendChild(nextDesc)
                     }
-                    next.addEventListener('click', () => {
-                        page += 1
-                        buttonSection.removeChild(next)
-                        pageCount.textContent = `Page ${page} of ${totalPages}`;
-                        div.innerHTML = (`
-                        `);
-
-                        fetchFunction(page, productPerPage, div, 'desc')
-                    })
                     
-                
+                    
 
             })
     }
