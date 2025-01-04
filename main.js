@@ -1,14 +1,13 @@
-
-
 //fetch function
 const starSOlid = `<i class="fa-solid fa-star"></i>`;
 const starNormal = `<i class="fa-regular fa-star"></i>`;
 
 const pageCount = document.querySelector('#pageCount')
 
-
+//buttonsection
 const buttonSection = document.querySelector('#buttonSection')
 const prevButtonSection = document.querySelector('#prevButtonSection')
+
 //popular
 const next = document.querySelector('#nextButton')
 const previous = document.querySelector('#previousButton')

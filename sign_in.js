@@ -54,7 +54,6 @@ function errorMassage(element, massage) {
 
 
 form.addEventListener('submit', (event) => {
-    // form.classList.add("needs-validation")
     event.preventDefault();
     const email = form.email.value;
     const password = stringToHash(form.password.value);
