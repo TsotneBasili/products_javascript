@@ -170,37 +170,25 @@ function fetchFunction(page, productPerPage, div, api='default') {
                     //nextprev buttons
 
 
-                    
                     //sorting
                     //popular
-                    let sortEventCount = 0
                     function sortByPopularEventListener() {
-                        sortEventCount += 1
-                        if (sortEventCount > 1) {
-                            sortOptionAsc.removeEventListener('click', sortOptionAscEventListener);
-                            sortOptionAsc.addEventListener('click', sortOptionAscEventListener);
-                         }
- 
+                        
                         window.location.href = './catalog.html'
         
                     };
                     sortByPopular.addEventListener('click', sortByPopularEventListener)
 
-                    let ascSortEventCount = 0
+
+  /////////////////////////////////////////////////////////////////////////////////////////                  
                     //asc
                     function sortOptionAscEventListener() {
-                        // if (ascSortEventCount === 2){
-                        // catalogSecButton2.removeChild(sortOptionAsc);
-                        // }
-                        // ascSortEventCount += 1
-                        sortOptionAsc.removeEventListener('click', sortOptionAscEventListener)
 
-                        arrowDown.style.transform = 'rotate(0deg)';     
-                        
+                        arrowDown.style.transform = 'rotate(0deg)';      
                         catalogSecButton2.removeChild(sortOptionDesc);
                         catalogSecButton2.removeChild(sortByPopular);
 
-                        page = 0
+                        let ascPage = 0
 
                         //prev_next asc buttons
                         //prev
@@ -212,13 +200,13 @@ function fetchFunction(page, productPerPage, div, api='default') {
                         }
                        //prevAsc                   
                         function prevAscEventListener() {
-                            page -= 1
                             prevButtonSection.removeChild(prevAsc)
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                            ascPage -= 1
+                            pageCount.textContent = `Page ${ascPage} of ${totalPages}`;
                             div.innerHTML = (`
                                 `);
 
-                            fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
+                            fetchFunction(ascPage, productPerPageCatalogAsc, productsDivCatalog, 'asc')
     
                         }
     
@@ -233,33 +221,34 @@ function fetchFunction(page, productPerPage, div, api='default') {
                         }
 
 
-                        function nextAscEventListener()  {    
-                            page += 1
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                        function nextAscEventListener()  {
+                            buttonSection.removeChild(nextAsc);
+
+                            ascPage += 1
+                            pageCount.textContent = `Page ${ascPage} of ${totalPages}`;
                             div.innerHTML = (`
                             `);
 
-                            fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')
+                            fetchFunction(ascPage, productPerPageCatalogAsc, productsDivCatalog, 'asc')
                         }
                         nextAsc.addEventListener('click', nextAscEventListener)
 
                         sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
 
-                        fetchFunction(page, productPerPageCatalogAsc, productsDivCatalog, 'asc')     
+                        fetchFunction(ascPage, productPerPageCatalogAsc, productsDivCatalog, 'asc')     
 
                     }
                     sortOptionAsc.addEventListener('click', sortOptionAscEventListener)
+  /////////////////////////////////////////////////////////////////////////////////////////                  
 
                     //desk
                     function sortOptionDescEventListener() {
-                        sortOptionDesc.removeEventListener('click', sortOptionDescEventListener)
-
                         arrowDown.style.transform = 'rotate(0deg)';     
 
                         catalogSecButton2.removeChild(sortOptionAsc);
                         catalogSecButton2.removeChild(sortByPopular);
 
-                        page = 0
+                        let descPage = 0
                         //prev_next asc buttons
                         if (prevButtonSection.contains(previous)) {
                             prevButtonSection.removeChild(previous);
@@ -271,13 +260,13 @@ function fetchFunction(page, productPerPage, div, api='default') {
 
                        //prevDesc                   
                         function prevDescEventListener() {
-                            page -= 1
+                            descPage -= 1
                             prevButtonSection.removeChild(prevDesc)
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                            pageCount.textContent = `Page ${descPage} of ${totalPages}`;
                             div.innerHTML = (`
                                 `);
 
-                            fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
+                            fetchFunction(descPage, productPerPageCatalogDesc, productsDivCatalog, 'desc')
     
                         }
     
@@ -291,19 +280,21 @@ function fetchFunction(page, productPerPage, div, api='default') {
                             buttonSection.removeChild(nextAsc);
                         }
 
-                        function nextDescEventListener()  {    
-                            page += 1
-                            pageCount.textContent = `Page ${page} of ${totalPages}`;
+                        function nextDescEventListener()  {  
+                            buttonSection.removeChild(nextDesc);
+
+                            descPage += 1
+                            pageCount.textContent = `Page ${descPage} of ${totalPages}`;
                             div.innerHTML = (`
                             `);
 
-                            fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc')
+                            fetchFunction(descPage, productPerPageCatalogDesc, productsDivCatalog, 'desc')
                         }
                         nextDesc.addEventListener('click', nextDescEventListener)
 
                         sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
 
-                        fetchFunction(page, productPerPageCatalogDesc, productsDivCatalog, 'desc') 
+                        fetchFunction(descPage, productPerPageCatalogDesc, productsDivCatalog, 'desc') 
 
                     }
                     sortOptionDesc.addEventListener('click', sortOptionDescEventListener)
@@ -440,11 +431,6 @@ sortOptionAsc.classList.add('catalog_span')
 sortOptionDesc.classList.add('catalog_span')
 
 
-
-
-
-
-
 //sorting
 //catalog eventlistener
 let clickCount = 0;
@@ -456,7 +442,6 @@ function handleCatalogClick() {
         catalogSecButton2.removeEventListener('click', handleCatalogClick)
         catalogSecButton2.addEventListener('click', handleCatalogClick)
      }
-
 
     if (clickCount % 2 === 1){
         catalogSecButton2.appendChild(sortByPopular);
