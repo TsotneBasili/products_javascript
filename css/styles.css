@@ -3,7 +3,10 @@
 /* container  */
 .container {
     width: min(100%, 1440px);
+<<<<<<< HEAD
     /* min-width: 100%; */
+=======
+>>>>>>> parent of 45f485d (first commit)
     margin: auto;
 }
 
@@ -13,8 +16,8 @@
     max-width: inherit;
     width: inherit;
     top: 0;
-    /* left: 50%;
-    transform: translate(-50%); */
+    left: 50%;
+    transform: translate(-50%);
     z-index: 1;
 
     background-color: #012426;
@@ -439,13 +442,12 @@
 
 .catalog_sec_button2 {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 4px 8px;
 
     width: 160px;
-    /* height: 32px; */
+    height: 32px;
     left: 124px;
     border-radius: 4px;
     background-color: #A1C3C9;
@@ -457,15 +459,6 @@
     font-weight: 400;
     line-height: 24px;
     color: #2C4246;
-}
-
-.catalog_span {
-    width: 100%;
-}
-
-.catalog_span:hover {
-    border: 1px solid #000;
-    border-radius: 5px;
 }
 
 .catalog_sec_button2:hover,
@@ -559,7 +552,7 @@
 }
 
 .catalog_sec_sec2_article_image {
-    width: min(100%, 300px);
+    width: 100%;
     height: 298px;
     object-fit: cover; 
     object-position: center;
@@ -573,11 +566,13 @@
 
 .catalog_sec_sec2_article_p {
     font-family: "Inter", serif;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 27px;
     color: #D9D9D9;
+
     margin: 16px 8px;
+    
 }
 
 .catalog_sec_sec2_article_span {
@@ -596,10 +591,6 @@
     line-height: 27px;
     color: #05BCCA;
      
-}
-
-.text-warning {
-    color: gold;
 }
 
 .section3_cart {
@@ -796,6 +787,7 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
+<<<<<<< HEAD
 }
 
 
@@ -888,4 +880,6 @@
 
 .not_validated {
     background-color: #2C4246CC;
+=======
+>>>>>>> parent of 45f485d (first commit)
 }
