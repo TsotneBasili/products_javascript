@@ -123,8 +123,6 @@ function fetchFunction(page, productPerPage, div, api='default') {
 
                 ///function two
                 function two() {
-                    // buttonSection.style.display = "flex"
-
                     const totalPages = Math.ceil(data.total / productPerPage)
                     pageCount.textContent = `Page ${page + 1} of ${totalPages}`;
 
@@ -188,8 +186,9 @@ function fetchFunction(page, productPerPage, div, api='default') {
                         catalogSecButton2.removeChild(sortOptionDesc);
                         catalogSecButton2.removeChild(sortByPopular);
 
-                        let ascPage = 0
+                        
 
+                        ascPage = 0
                         //prev_next asc buttons
                         //prev
                         if (prevButtonSection.contains(previous)) {
@@ -248,7 +247,7 @@ function fetchFunction(page, productPerPage, div, api='default') {
                         catalogSecButton2.removeChild(sortOptionAsc);
                         catalogSecButton2.removeChild(sortByPopular);
 
-                        let descPage = 0
+                        descPage = 0
                         //prev_next asc buttons
                         if (prevButtonSection.contains(previous)) {
                             prevButtonSection.removeChild(previous);
@@ -314,7 +313,6 @@ function fetchFunction(page, productPerPage, div, api='default') {
 
     function fetchFunctionasc(){
         div.innerHTML = ''
-
         fetch(`https://dummyjson.com/products?sortBy=title&order=asc&limit=${productPerPage}&skip=${page * productPerPage}`)
             .then(res => res.json())
             .then(data => {
@@ -405,12 +403,12 @@ const productPerPageCatalog = 4;
 fetchFunction(catalogCurrentPage, productPerPageCatalog, productsDivCatalog)
 
 //catalog asc
-let currentPageAsc = 0;
+let ascPage = 0
 const productPerPageCatalogAsc = 3;
 
 
 //catalog desc
-let currentPageDesc = 0;
+let descPage = 0
 
 const productPerPageCatalogDesc = 5
 
@@ -458,8 +456,6 @@ function handleCatalogClick() {
         arrowDown.style.transform = 'rotate(0deg)';     
     }
 
-    // Remove the event listener after it's executed
-    // catalogSecButton2.removeEventListener('click', handleCatalogClick);
 }
 
 catalogSecButton2.addEventListener('click', handleCatalogClick);
